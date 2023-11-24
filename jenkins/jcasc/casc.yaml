@@ -1,0 +1,12 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "somethingsecret"
+  authorizationStrategy: loggedInUsersCanDoAnything
+
+# specify the seedjob groovy script that will create the  pipelines for us
+jobs:
+  - file: /usr/share/jenkins/ref/jobs/seedjob.groovy
