@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: "Sample"
+  systemMessage: "${JENKINS_MESSAGE}"
   securityRealm:
     local:
       allowsSignup: false
@@ -10,4 +10,4 @@ jenkins:
 
 # Create jobs using seedjob groovy
 jobs:
-  - file: /usr/share/jenkins/ref/setup/seedjob.groovy
+  - file: /usr/share/jenkins/ref/seedjob.groovy
