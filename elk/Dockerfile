@@ -1,5 +1,5 @@
 # Use the official Kibana image as the base
-FROM kibana:7.10.0
+FROM kibana:8.11.1
 
 # Install Python and pip
 USER root

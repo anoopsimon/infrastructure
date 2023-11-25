@@ -4,8 +4,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 // Path to the directory containing Groovy scripts for job definitions
-//String scriptsDir = Jenkins.instance.getRootDir().getAbsolutePath() + '/custom-jobs'
-String scriptsDir ='/usr/share/jenkins/ref/custom-jobs'
+//String scriptsDir = Jenkins.instance.getRootDir().getAbsolutePath() + '/jobs'
+String scriptsDir ='/usr/share/jenkins/ref/jobs'
 
 // Create a File object pointing to the scripts directory
 File dir = new File(scriptsDir)
