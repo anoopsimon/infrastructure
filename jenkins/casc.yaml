@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: "Jenkins configured automatically by JCasC"
+  systemMessage: "${JENKINS_MESSAGE}"
   securityRealm:
     local:
       allowsSignup: false
@@ -8,6 +8,6 @@ jenkins:
           password: "${JENKINS_ADMIN_PASSWORD}"
   authorizationStrategy: loggedInUsersCanDoAnything
 
-# specify the seedjob groovy script that will create the  pipelines for us
+# Create jobs using seedjob groovy
 jobs:
-  - file: /usr/share/jenkins/ref/jobs/seedjob.groovy
+  - file: /usr/share/jenkins/ref/setup/seedjob.groovy
