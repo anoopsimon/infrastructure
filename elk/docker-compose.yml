@@ -1,0 +1,36 @@
+version: '3.6'
+services:
+ Elasticsearch:
+   image: elasticsearch:$STACK_VERSION
+   container_name: elasticsearch
+   restart: always
+   volumes:
+   - elastic_data:/usr/share/elasticsearch/data/
+   environment:
+    #  ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    - node.name=elasticsearch
+    - discovery.type=single-node
+    #  ELASTIC_PASSWORD: elastic123
+   ports:
+   - '9200:9200'
+   - '9300:9300'
+   networks:
+     - elk
+
+ Kibana:
+   image: kibana:$STACK_VERSION
+   container_name: kibana
+   restart: always
+   ports:
+   - '5601:5601'
+   environment:
+     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    #  - ELASTICSEARCH_SERVICEACCOUNTTOKEN=MY_TOKEN
+   depends_on:
+     - Elasticsearch
+   networks:
+     - elk
+volumes:
+ elastic_data: {}
+networks:
+ elk:
