@@ -41,4 +41,4 @@ Default credentials are admin/admin.
 Configuration (Optional): Configure SonarQube as per your project needs.
 
 
-![UpdatePassword](../assets/img/sonar-update-pwd.png)
+![UpdatePassword](../.assets/img/sonar-update-pwd.png)
