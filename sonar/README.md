@@ -34,11 +34,16 @@ To run this Docker Compose file for SonarQube, you will need:
 
 This command starts the containers in detached mode.
 
-Access SonarQube:
+##  Access SonarQube:
 
 Once the containers are up, SonarQube will be accessible at http://localhost:9000.
-Default credentials are admin/admin.
+
+Default credentials are `admin/admin`.
 Configuration (Optional): Configure SonarQube as per your project needs.
 
-
+## Initial Setup after login
 ![UpdatePassword](../.assets/img/sonar-update-pwd.png)
+
+## Home Page After setting up password
+
+![HomePage](../.assets/img/sonar-home.png)
