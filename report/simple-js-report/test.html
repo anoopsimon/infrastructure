@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combined Login and Feed Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        .container { width: 300px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .login-container, .twitter-feed { display: none; }
+        .visible { display: block; }
+        .header { background-color: #1DA1F2; color: white; padding: 10px; text-align: center; }
+        .tweet { background-color: #fff; margin: 10px 0; padding: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .tweet img { max-width: 100%; height: auto; }
+        .tweet .content { margin-top: 10px; }
+        .tweet .actions { color: #1DA1F2; margin-top: 10px; }
+        .tweet .actions span { margin-right: 10px; cursor: pointer; }
+        .sidebar { float: right; width: 30%; }
+        input, button { width: 100%; padding: 10px; margin: 5px 0; }
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+
+<div class="container login-container visible">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br>
+        <input type="password" placeholder="Password" required><br>
+        <button type="button" onclick="showFeed()">Login</button>
+    </form>
+</div>
+
+<div class="container twitter-feed">
+    <div class="header">
+        <h1>Welcome <span id="userWelcome">[Username]</span></h1>
+    </div>
+
+    <div class="main">
+        <!-- Example Tweet -->
+        <div class="tweet">
+            <img src="path_to_image.jpg" alt="Tweet Image">
+            <div class="content">Some text here as a comment...</div>
+            <div class="actions">
+                <span>Reply</span> <span>Retweet</span> <span>Like</span>
+            </div>
+        </div>
+        <!-- Add more tweets as needed -->
+    </div>
+
+    <div class="sidebar">
+        <!-- Sidebar content like trends or suggestions -->
+    </div>
+</div>
+
+<script>
+    function showFeed() {
+        var username = document.getElementById('username').value;
+        document.getElementById('userWelcome').innerText = username;
+        document.querySelector('.login-container').classList.remove('visible');
+        document.querySelector('.twitter-feed').classList.add('visible');
+    }
+</script>
+
+</body>
+</html>

@@ -95,7 +95,7 @@
             if (test.status === 'fail' && test.screenshot) {
                 var imgLink = document.createElement('a');
                 imgLink.href = '#';
-                imgLink.innerText = 'View Screenshot';
+                imgLink.innerText = 'Screenshot';
                 imgLink.onclick = function() { showScreenshot(test.screenshot); };
                 screenshotCell.appendChild(imgLink);
             } else {

@@ -1,36 +1,37 @@
-version: '3.6'
+version: '3.2'
 services:
- Elasticsearch:
-   image: elasticsearch:$STACK_VERSION
-   container_name: elasticsearch
-   restart: always
-   volumes:
-   - elastic_data:/usr/share/elasticsearch/data/
-   environment:
-    #  ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-    - node.name=elasticsearch
-    - discovery.type=single-node
-    #  ELASTIC_PASSWORD: elastic123
-   ports:
-   - '9200:9200'
-   - '9300:9300'
-   networks:
-     - elk
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:$ELK_VERSION
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
 
- Kibana:
-   image: kibana:$STACK_VERSION
-   container_name: kibana
-   restart: always
-   ports:
-   - '5601:5601'
-   environment:
-     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    #  - ELASTICSEARCH_SERVICEACCOUNTTOKEN=MY_TOKEN
-   depends_on:
-     - Elasticsearch
-   networks:
-     - elk
+  logstash:
+    image: docker.elastic.co/logstash/logstash:$ELK_VERSION
+    container_name: logstash
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.0
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+
 volumes:
- elastic_data: {}
-networks:
- elk:
+  elasticsearch-data:
+    driver: local
