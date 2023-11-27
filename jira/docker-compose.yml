@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  jira:
+    image: atlassian/jira-software
+    environment:
+      - 'JIRA_DATABASE_URL=postgresql://jira:password@postgres/jiradb'
+      - 'JIRA_DB_TYPE=postgres72'
+      - 'JIRA_DB_DRIVER=org.postgresql.Driver'
+      - 'JIRA_DB_SCHEMA=public'
+      - 'JIRA_HOME=/var/atlassian/application-data/jira'
+    ports:
+      - '8080:8080'
+    volumes:
+      - 'jira_data:/var/atlassian/application-data/jira'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      - 'POSTGRES_DB=jiradb'
+      - 'POSTGRES_USER=jira'
+      - 'POSTGRES_PASSWORD=password'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+
+volumes:
+  jira_data:
+  postgres_data:
