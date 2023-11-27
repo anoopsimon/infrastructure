@@ -1,0 +1,6 @@
+TestID,InputParameters,ExpectedOutput,ActualOutput,Result,ExecutionTime,Comments
+Test01,"param1=5, param2=10","Output=15","Output=15",Pass,0.35ms,""
+Test02,"param1=3, param2=7","Output=10","Output=11",Fail,0.40ms,"Calculation error"
+Test03,"param1=8, param2=2","Output=10","Output=10",Pass,0.30ms,""
+Test04,"param1=0, param2=0","Output=0","Output=0",Pass,0.25ms,"Boundary case"
+Test05,"param1=-1, param2=5","Output=4","Output=4",Pass,0.38ms,"Negative parameter test"

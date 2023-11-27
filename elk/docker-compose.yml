@@ -19,11 +19,12 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
+      - ./logstash/config/data:/usr/share/logstash/data # Mounting the sample data directory
     depends_on:
       - elasticsearch
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.10.0
+    image: docker.elastic.co/kibana/kibana:$ELK_VERSION
     container_name: kibana
     ports:
       - "5601:5601"
