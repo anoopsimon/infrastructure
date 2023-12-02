@@ -19,3 +19,4 @@ ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
+ec2-fleet:3.2.0
