@@ -16,7 +16,7 @@ Follow these high-level steps to create a Jenkins Pipeline job using the provide
 
 5. **Enter Pipeline Script**: Paste the below DSL script into the "Pipeline script" field, or specify the path to a Jenkinsfile if the script is stored in source control.
 
-[DSL Script](./update-ec2-plugin.groovy)
+[DSL Script](../jobs/update-ec2-plugin.groovy)
 
 6. **Save**: Click "Save" to create the job.
 

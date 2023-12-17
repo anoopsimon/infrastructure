@@ -1,3 +1,5 @@
+// Script to update Amazon EC 2 plugin AMI ID 
+// This script will be useful when AMI ID is subject to change due to patching
 pipeline {
     agent any
 
